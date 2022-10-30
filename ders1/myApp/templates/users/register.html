@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+
+{% block nonfooter %}
+    
+
+    
+    <div class="row justify-content-center align-items-center" style="height: 90vh;">
+        <div class="col-4">
+            <main class="form-signin">
+                <form method="POST">
+                    {% csrf_token %}
+                    <h1 class="h3 mb-3 fw-normal">Kayıt Ol</h1>
+
+
+                    <div class="form-floating">
+                        <input type="text" name="name" class="form-control" id="floatingInput" placeholder="Ad">
+                        <label for="floatingInput">Ad</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="text" name="surname" class="form-control" id="floatingInput" placeholder="Soyad">
+                        <label for="floatingInput">Soyad</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="email" name="email" class="form-control" id="floatingInput" placeholder="Email">
+                        <label for="floatingInput">Email</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="text" name="username" class="form-control" id="floatingInput"
+                            placeholder="Kullanıcı Adı">
+                        <label for="floatingInput">Kullanıcı Adı</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="password" name="password1" class="form-control" id="floatingPassword"
+                            placeholder="Password">
+                        <label for="floatingPassword">Parola Oluştur</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="password" name="password2" class="form-control" id="floatingPassword"
+                            placeholder="Password">
+                        <label for="floatingPassword">Tekrar Parola</label>
+                    </div>
+
+                    <div class="checkbox mb-3">
+                        <label>
+                            <input type="checkbox" value="remember-me"> Remember me
+                        </label>
+                    </div>
+                    
+                    <button class="w-100 btn btn-lg btn-primary" type="submit">Kaydol</button>
+                    
+                    {% if hata %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ hata }}
+                        </div>
+                    {% endif %}
+                        
+                    
+                </form>
+            </main>
+        </div>
+    </div>
+    
+{% endblock nonfooter %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+
+
+{% if shop %}
+
+
+{% for i in shop %}
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="{{ i.image.url }}" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{ i.product.title }}</h5>
+                <p class="card-text">fiyat: {{ i.fiyat }}</p>
+                <form action="" method="POST" class="align-items-center">
+                    {% csrf_token %}
+                    <label for="number">Adet:</label>
+                    <input type="number" name="number{{ i.id }}" value="{{ i.adet }}" min="0" class="py-2 form-control d-inline-flex" style="width: 70px;">
+                    <button type="submit" class="btn btn-primary">Ürünü Güncelle</button>
+                    <a class="btn btn-danger" href="{% url 'deleteshop' i.id %}">X</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+<h2>Toplam Fiyat: {{ toplamfiyat }}</h2>
+{% else %}
+<h2>Sepet Boş</h2>
+{% endif %}
+{% endblock body %}
+    

@@ -1,0 +1,32 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block body %}
+
+<div class="row">
+    <h3 class="row offset-1 my-4 ">Araç Özellikleri</h3>
+    <div class="offset-1 col-6 ">
+        <div class="card">
+            <img src="{{ post.image.url }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ post.title }}</h5>
+                <h5>Fiyat: {{ post.fiyat }}₺</h5>
+                <p class="card-text">{{ post.text }}</p>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <input type="number" name="number" value="1" min="1" class="py-2 form-control d-inline-flex" style="width: 70px;">
+                    <button type="submit" class="btn btn-primary">Sepete Ekle</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col"></div>
+</div>
+
+<img src="" alt=""><br><br>
+ <br><br>
+<br><br>
+
+{% endblock body %}
+
