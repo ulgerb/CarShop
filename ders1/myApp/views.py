@@ -39,17 +39,20 @@ def shoping(request):
     shop = Shop.objects.filter(user=request.user)
     toplamfiyat = 0
     if request.method == "POST":
-        if shop:
+        # if shop:
             adetkey = list(request.POST)[1]
+            print('POST içerisinden gelen',request.POST)
+            print('list POST', list(request.POST))
+            print('adetkey',adetkey)
             adetid = adetkey[6:] # ürünün id değerini çekmek için
             adet = int(request.POST[adetkey])
             print(adetkey, adetid)
             buy = Shop.objects.get(id=adetid)
             buy.adet = adet
             buy.fiyat = adet* buy.product.fiyat
-    
             buy.save()
-            if buy.adet == '0':
+            print(buy.adet, "asd")
+            if buy.adet == 0:
                 buy.delete()
 
     for i in shop:
